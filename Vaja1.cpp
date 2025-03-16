@@ -52,6 +52,10 @@ void CountingSort(vector<int> &A) {
 	A = B;
 }
 
+void RomanSort(vector<int> &A) {
+
+}
+
 int main(int argc, const char* argv[]) {
 	vector<int> A;
 
