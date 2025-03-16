@@ -59,7 +59,7 @@ int main(int argc, const char* argv[]) {
 	if (!Branje_Stevil(A, argv[2])) return 0;
 
 	if (argv[1][0] == '0') {
-		//counting sort
+		CountingSort(A);
 	}
 	else {
 		//Roman sort
