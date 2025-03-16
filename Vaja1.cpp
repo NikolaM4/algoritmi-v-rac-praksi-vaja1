@@ -53,7 +53,24 @@ void CountingSort(vector<int> &A) {
 }
 
 void RomanSort(vector<int> &A) {
+	int min_val = *min_element(A.begin(), A.end());
+	int max_val = *max_element(A.begin(), A.end());
 
+	int range = max_val - min_val + 1;
+
+	vector<int> C(range, 0);
+
+	for (int i = 0; i < A.size(); i++) {
+		C[A[i] - min_val]++;
+	}
+
+	int j = 0;
+	for (int i = 0; i < range; i++) {
+		while (C[i] > 0) {
+			A[j++] = i + min_val;
+			C[i]--;
+		}
+	}
 }
 
 int main(int argc, const char* argv[]) {
@@ -66,7 +83,7 @@ int main(int argc, const char* argv[]) {
 		CountingSort(A);
 	}
 	else {
-		//Roman sort
+		RomanSort(A);
 	}
 	Izpis_Stevil(&A[0],A.size());
 
