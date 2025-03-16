@@ -1,5 +1,6 @@
 #include <fstream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 bool Branje_Stevil(vector<int> &vec, const char s[]) {
@@ -27,7 +28,28 @@ void Izpis_Stevil(int* polje, unsigned int velikost) {
 }
 
 void CountingSort(vector<int> &A) {
+	int min_val = *min_element(A.begin(), A.end());
+	int max_val = *max_element(A.begin(), A.end());
 
+	int range = max_val - min_val + 1;
+
+	vector<int> C(range, 0);
+	vector<int> B(A.size());
+
+	for (int i = 0; i < A.size(); i++) {
+		C[A[i] - min_val]++;
+	}
+
+	for (int i = 1; i < range; i++) {
+		C[i] += C[i - 1];
+	}
+
+	for (int i = A.size() - 1; i >= 0; i--) {
+		B[C[A[i] - min_val] - 1] = A[i];
+		C[A[i] - min_val]--;
+	}
+
+	A = B;
 }
 
 int main(int argc, const char* argv[]) {
