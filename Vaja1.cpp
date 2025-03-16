@@ -26,6 +26,10 @@ void Izpis_Stevil(int* polje, unsigned int velikost) {
 		output << polje[i] << ' ';
 }
 
+void CountingSort(vector<int> &A) {
+
+}
+
 int main(int argc, const char* argv[]) {
 	vector<int> A;
 
